@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- TODO: Change title -->
-    <title>SF fire department responce to incients.</title>
+    <title>Dataset</title>
 
     <!-- Load Bulma from CDN (consider saving it to repository instead) -->
     <!-- https://bulma.io/ -->
@@ -110,84 +110,46 @@
     <div class="container">
       <!-- Begin page content -->
       <div class="content">
-        <h1 class="title">
-          <!-- TODO: Change page title -->
-          Description
-        </h1>
-        <br>
-        <p class="subtitle">
-          <!-- TODO: Change page subtitle -->
-          What is the goal of this project
-        </p>
-
-        <br>
-
-        <p>The goal of this project is to use a dataset related to San Francisco fire department to illustrate some of their service variables. The initial analysis of the original data shows that there are three variables of particular interest related to the dataset. These variables are related to the response time of each unit to an incident, the frequesncy of the call during different time intervals of the day, along with the call type group of each incident.</p>
-
         
         
-       
-        <span class="heading">Acknowledgements</span>
+        <h2 id="data">Data</h2>
 
-        <p>
-          <a href="#">Link to insiration</a><br/>
-          <a href="#">Link to StackOverflow snippet</a>
-        </p>
+        <p>You can find the original dataset <a href="https://data.sfgov.org/Public-Safety/Fire-Department-Calls-for-Service/nuek-vuh3">here</a>. This dataset has over 4 million observations dating several years. The dataset is titled, 'Fire Department Calls for Service,' and gives up to several observations for each 911 phone call that requires San Francisco Fire Department assisstance. Each observation contains variables describing different vehicles such as Fire Trucks or Ambulances which arrive on scene. Other information included are: time, location, neighborhood, etc...</p>
 
-        <p class="is-6">
-          <em>Thanks to Person Name for their suggestion to do something with the visualization.</em>
-        </p>
+        <blockquote>
+          <p>
+            "This data is made available under the Public Domain Dedication and License v1.0 whose full text can be found at: <a href="http://www.opendatacommons.org/licenses/pddl/1.0/">www.opendatacommons.org/licenses/pddl/1.0/</a>"
+          </p>
+          <cite><a href="http://www.opendatacommons.org/licenses/pddl/1.0/">License</a></cite>
+        </blockquote>
 
-        <h2 id="grade">Grade</h2>
+        <p>There are more than 30 columns in this report in which we chose the most important ones for our visualization:</p>
+        
 
-        <!-- TODO: Remove custom style if no longer needed -->
-        <style>
-          table.grades tbody tr td:nth-child(1),
-          table.grades tbody tr td:nth-child(2) {
-            text-align: center;
-          }
-        </style>
+        <ol>
+          <li><strong>Call Type:</strong> Type of call the incident falls into.</li>
 
-        <!-- TODO: Change or remove table -->
-        <!-- https://bulma.io/documentation/elements/table/ -->
-        <table class="table is-hoverable is-bordered grades">
-          <thead>
-            <tr>
-              <th>Letter</th>
-              <th>Done?</th>
-              <th>Description</th>
-            </tr>
-          </thead>
+          <li><strong>Call Final Disposition:</strong> Disposition of the call (Code). For example TH2: Transport to Hospital - Code 2, FIR: Resolved by Fire Department.</li>
 
-          <tbody>
-            <tr>
-              <td>D</td>
-              <td><i class="has-text-success fas fa-check-circle"></i></td>
-              <td>Discussion of how this grade level was satisfied. Exactly how this section should look will depend on the assignment in question. There is no requirement for formatting in this way. This is just an example of what a table element might look like for this informaiton.</td>
-            </tr>
+          <li><strong>Unit Type:</strong> Unit type.</li>
 
-            <tr>
-              <td>C</td>
-              <td><i class="has-text-success fas fa-check-circle"></i></td>
-              <td>Discussion of how this grade level was satisfied.</td>
-            </tr>
+          <li><strong>Received DtTm:</strong> Date and time of call is received at the 911 Dispatch Center.</li>
+          <li><strong>Response DtTm:</strong> Date and time this unit acknowledges the dispatch and records that the unit is en route to the location of the call.</li>
 
-            <tr>
-              <td>B</td>
-              <td><i class="has-text-warning far fa-check-circle"></i></td>
-              <td>Discussion of how this grade level was satisfied.</td>
-            </tr>
+          <li><strong>On Scene DtTm:</strong> Date and time the unit records arriving to the location of the incident.</li>
 
-            <tr>
-              <td>A</td>
-              <td><i class="has-text-danger fas fa-times-circle"></i></td>
-              <td>Discussion of how this grade level was not satisfied.</td>
-            </tr>
-          </tbody>
+          <li><strong>Call Type Group:</strong> Call types are divided into four main groups: Fire, Alarm, Potential Life Threatening and Non Life Threatening.</li>
 
-        </table>
+          <li><strong> Neighborhood District:</strong> Neighborhood District associated with this address, boundaries available here.</li>
+          <li><strong> Location:</strong> NLatitude and longitude of address obfuscated either to the midblock, intersection or call box.</li>
+        </ol>
 
-      
+        <h3 id="wrangling">Wrangling</h3>
+
+        <p>Perhaps you had to do some data wrangling to the original dataset to prepare it for visualization. This would be a great place to discuss some of that wrangling.
+
+
+
       </div>
       <!-- End page content -->
     </div>
