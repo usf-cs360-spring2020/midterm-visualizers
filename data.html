@@ -38,7 +38,7 @@
       <div class="navbar-brand">
         <!-- TODO: Change link to repository homepage if needed -->
         <!-- TODO: Change which navbar-item is-active if needed -->
-        <a class="navbar-item is-active" href="index.html">
+        <a class="navbar-item" href="index.html">
           <span class="icon"><i class="fas fa-home"></i></span>
           <span>Home</span>
         </a>
@@ -53,7 +53,7 @@
       <div id="main-menu" class="navbar-menu has-text-weight-medium">
         <!-- Left navbar items -->
         <div class="navbar-start">
-          <a class="navbar-item" href="data.html" title="Data">
+          <a class="navbar-item is-active" href="data.html" title="Data">
             <span class="icon"><i class="fas fa-table"></i></span>
             <span>Data</span>
           </a>
@@ -111,17 +111,21 @@
         
         <h2 id="data">Data</h2>
 
-        <p>You can find the original dataset <a href="https://data.sfgov.org/Public-Safety/Fire-Department-Calls-for-Service/nuek-vuh3">here</a>. This dataset has over 4 million observations dating several years. The dataset is titled, 'Fire Department Calls for Service,' and gives up to several observations for each 911 phone call that requires San Francisco Fire Department assisstance. Each observation contains variables describing different vehicles such as Fire Trucks or Ambulances which arrive on scene. Other information included are: time, location, neighborhood, etc...</p>
+        <p>Source: <a href="data.sfgov.org">data.sfgov.org</a><br />
+            Publishing Department: Fire Department<br />
+            Rows: <strong>5.21M</strong><br />
+            Columns: <strong>34</strong><br />
+            License: Public Domain Dedication and License v1.0 (<a href="http://www.opendatacommons.org/licenses/pddl/1.0/"></a>PDDL</a>)<br />
+            Accessed: <em>February 11, 2020</em><br />
+        </p>
 
-        <blockquote>
-          <p>
-            "This data is made available under the Public Domain Dedication and License v1.0 whose full text can be found at: <a href="http://www.opendatacommons.org/licenses/pddl/1.0/">www.opendatacommons.org/licenses/pddl/1.0/</a>"
-          </p>
-          <cite><a href="http://www.opendatacommons.org/licenses/pddl/1.0/">License</a></cite>
-        </blockquote>
+        <p>You can find the original dataset <a href="https://data.sfgov.org/Public-Safety/Fire-Department-Calls-for-Service/nuek-vuh3">here</a>. 
+            It contains over 4 million observations dating several years. The dataset is titled, 'Fire Department Calls for Service' 
+            and describes multiple observations for each 911 phone call that requires San Francisco Fire Department assisstance. 
+            Each row contains information describing a particular <u>emergency response</u> to an unexpected or dangeours occurence.
+            Information included are: call type, time, location, neighborhood, response unit, etc.</p>
 
-        <p>There are more than 30 columns in this report in which we chose the most important ones for our visualization:</p>
-        
+        <p>Columns of interest that we chose for our specific visualization theme are:</p>
 
         <ol>
           <li><strong>Call Type:</strong> Type of call the incident falls into.</li>
@@ -138,10 +142,10 @@
           <li><strong>Call Type Group:</strong> Call types are divided into four main groups: Fire, Alarm, Potential Life Threatening and Non Life Threatening.</li>
 
           <li><strong> Neighborhood District:</strong> Neighborhood District associated with this address, boundaries available here.</li>
-          <li><strong> Location:</strong> NLatitude and longitude of address obfuscated either to the midblock, intersection or call box.</li>
+          <li><strong> Location:</strong> Latitude and longitude of address obfuscated either to the midblock, intersection or call box.</li>
         </ol>
 
-        
+        <p>More information on data wrangling coming soon.</p>
 
 
       </div>
