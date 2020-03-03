@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>SF fire department response to incidents.</title>
-  
+
 
   <!-- Load Bulma from CDN (consider saving it to repository instead) -->
   <!-- https://bulma.io/ -->
@@ -61,27 +61,27 @@
 
           <!-- TODO: Modify or remove dropdown -->
           <div class="navbar-item has-dropdown is-hoverable">
-              <a class="navbar-link">
-                Visualizations
+            <a class="navbar-link">
+              Visualizations
+            </a>
+
+            <div class="navbar-dropdown">
+              <a href="line.html" class="navbar-item">
+                <span class="icon"><i class="fas fa-chart-line"></i></span>
+                <span>Visualization 1(Line chart Parisa)</span>
               </a>
-  
-              <div class="navbar-dropdown">
-                <a href="line.html" class="navbar-item">
-                  <span class="icon"><i class="fas fa-chart-line"></i></span>
-                  <span>Visualization 1(Line chart Parisa)</span>
-                </a>
-                <!-- Change titles of pgs -->
-                <a href="v2_pk.html" class="navbar-item">
-                  <span class="icon"><i class="fas fa-chart-area"></i></span>
-                  <span>Visualization 2 (Pezanne)</span>
-                </a>
-                <a href="v3_dd.html" class="navbar-item">
-                  <span class="icon"><i class="fas fa-chart-area"></i></span>
-                  <span>Visualization 3 (Dan)</span>
-                </a>
-  
-              </div>
+              <!-- Change titles of pgs -->
+              <a href="v2_pk.html" class="navbar-item">
+                <span class="icon"><i class="fas fa-th"></i></span>
+                <span>Visualization 2 (Pezanne)</span>
+              </a>
+              <a href="v3_dd.html" class="navbar-item">
+                <span class="icon"><i class="fas fa-chart-area"></i></span>
+                <span>Visualization 3 (Dan)</span>
+              </a>
+
             </div>
+          </div>
         </div>
 
         <!-- Right navbar items -->
@@ -105,11 +105,18 @@
       <div class="content">
         <img src="img/firefighters.jpg" width="700px" style="padding-bottom:30px;" alt="">
 
+        <p>The San Francisco Fire Department (SFFD) provides fire and emergency medical services to the City and County
+          of San Francisco, California. The San Francisco Fire Department, along with the San Francisco Police
+          Department and San Francisco Sheriff's Department, serves an estimated population of 1.4 million people, which
+          includes the approximately 850,000 citizens residing in the 47.5 square miles (123 km2) of San Francisco</p>
+
         <h4><u>
             What is the goal of this project?
           </u>
         </h4>
-        <p>We want to use a dataset about the San Francisco fire department to understand the quantity of 911 requests they manage and how these requests can be segregated into different categories. Firefighters are used for more than handling fires, which is what we'd like to bring some attention to through our visualizations. 
+        <p>We want to use a dataset about the San Francisco fire department to understand the quantity of 911 requests
+          they manage and how these requests can be segregated into different categories. Firefighters are used for more
+          than handling fires, which is what we'd like to bring some attention to through our visualizations.
         </p>
 
         <h4><u>Theme</u></h4>
@@ -124,18 +131,19 @@
 
          -->
 
-         <ol>
-           <li>
-             No. of service calls by hour of day.
-           </li>
-           <li>
-             No. of service calls handled by different stations. 
-           </li>
-           <li>
-             No. of service calls handled by different units.
-           </li>
-         </ol>
-         <p>Each of the above will contain 'call type' or 'call type group' respectively as a 3rd metric encoded by color.</p>
+        <ol>
+          <li>
+            No. of service calls by hour of day.
+          </li>
+          <li>
+            No. of service calls handled by different stations.
+          </li>
+          <li>
+            No. of service calls handled by different units.
+          </li>
+        </ol>
+        <p>Each of the above will contain 'call type' or 'call type group' respectively as a 3rd metric encoded by
+          color.</p>
         <!--        
         <span class="heading">Acknowledgements</span>
         

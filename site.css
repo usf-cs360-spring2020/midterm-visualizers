@@ -11,3 +11,8 @@ a {
     height: 180px;
     width: 180px;
 }
+
+.image.is-960x500 {
+    width: 960px;
+    height: 500px;
+}
