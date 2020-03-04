@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Highlight Table</title>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+
+    <!-- Load Font Awesome 5 (free) icons -->
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <link rel="stylesheet" href="site.css">
+</head>
+
+
+<!-- Page header -->
+<!-- https://bulma.io/documentation/layout/hero/ -->
+<section class="hero is-info is-bold">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">Do SF Fire Fighters Only Fight Fire?</h1>
+            <h2 class="subtitle">Visualized using Tableau and D3.js</h2>
+        </div>
+    </div>
+</section>
+<!-- End page header -->
+
+<!-- Page navigation -->
+<!-- https://bulma.io/documentation/components/navbar/ -->
+<nav class="navbar is-light" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <!-- TODO: Change link to repository homepage if needed -->
+            <!-- TODO: Change which navbar-item is-active if needed -->
+            <a class="navbar-item" href="index.html">
+                <span class="icon"><i class="fas fa-home"></i></span>
+                <span>Home</span>
+            </a>
+
+            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+                data-target="main-menu">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div id="main-menu" class="navbar-menu has-text-weight-medium">
+            <!-- Left navbar items -->
+            <div class="navbar-start">
+                <a class="navbar-item" href="data.html" title="Data">
+                    <span class="icon"><i class="fas fa-table"></i></span>
+                    <span>Data</span>
+                </a>
+
+
+
+
+
+                <!-- TODO: Modify or remove dropdown -->
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                        Visualizations
+                    </a>
+
+                    <div class="navbar-dropdown">
+                        <a href="line.html" class="navbar-item">
+                            <span class="icon"><i class="fas fa-chart-line"></i></span>
+                            <span>Visualization 1(Parisa)</span>
+                        </a>
+                        <!-- Change titles of pgs -->
+                        <a href="v2_pk.html" class="navbar-item is-active">
+                            <span class="icon"><i class="fas fa-th"></i></span>
+                            <span>Visualization 2 (Pezanne)</span>
+                        </a>
+                        <a href="v3_dd.html" class="navbar-item">
+                            <span class="icon"><i class="fas fa-chart-area"></i></span>
+                            <span>Visualization 3 (Dan)</span>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right navbar items -->
+            <div class="navbar-end">
+                <!-- TODO: Update as needed -->
+
+
+                <a class="navbar-item" href="about.html" title="About">
+                    <span class="icon"><i class="fas fa-info-circle"></i></span>
+                    <span>About</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+<!-- End page navigation -->
+
+
+</html>
+
+
+<body>
+    <section class="section">
+        <div class="container content">
+            <h3>Where are the calls to the SFFD being processed? When do they get most number of calls?</h3><br>
+
+            <h6>Tableau Prototype:</h6>
+
+            <div class="image is-960x500"><img src="img/ServiceCallsHandledHourly2.png"></div>
+
+
+            <h3>Instruction</h3>
+
+            <p>
+                The highlight table shows the average* number of service calls during each hour of the day. The values range from 0.008 calls to 1.8 calls in a given hour. The hourly values are mapped against the battalion (headquarters) dealing with the call.
+            </p>
+            <p>
+                <i>*Daily average is a measure of total calls in 2019 within the hour divided by number of days in a year.</i>
+            </p>
+
+            <h3>Data Wrangling</h3>
+
+            <p>
+                The original dataset has been used for this visualization with filter on received time. The dataset has
+                been narrowed down to calls during 2019 fiscal year. Report time, battalion and No. of reports have been used as data. </p>
+
+            <h3>Conclusion</h3>
+
+
+            <p>In conclusion, it appears that battalions B02 and B03 handle a considerably larger number of service calls than the rest. B99 on the other hand, handles considerably fewer. It can also be seen that between 1am and 7am are when the least service calls are made, which makes logical sense. 10pm to 2pm and 4pm to 8pm are most busy times. </p>
+
+
+            <h3>D3 Implementation:</h3>
+            <p>For D3 implementation, I would like to get the time labels at a 45 degree angle for ease of readability. I'd like to get data-on-demand working with the help of a tooltip that gives additional details such as the average calls for that hour and the total calls for the hour.</p>
+
+
+        </div>
+    </section>
+
+</body>
+
+
+
+
+<!-- Page footer -->
+<!-- https://bulma.io/documentation/layout/footer/ -->
+<footer class="footer">
+    <div class="content has-text-centered is-size-7">
+        <p>
+            <a href="#top">
+                <span class="fas fa-arrow-up"></span>
+                <span class="has-text-weight-medium">Back to Top</span>
+            </a>
+        </p>
+
+        <p>
+            <!-- TODO: Change to link to your Github repository -->
+            <a href="https://github.com/usf-cs360-spring2020/template-bulma" class="button is-small"
+                style="padding-left: 1em; padding-right: 1em;">
+                <i class="fab fa-github-alt"></i>&nbsp;<strong>Github</strong>
+            </a>
+
+            <a href="https://fontawesome.com/" class="button is-small" style="padding-left: 1em; padding-right: 1em;">
+                <i class="fab fa-font-awesome"></i>&nbsp;<strong>FontAwesome</strong>
+            </a>
+
+            <a href="https://bulma.io" class="button is-small">
+                <img src="https://bulma.io/images/made-with-bulma--semiblack.png" alt="Made with Bulma" width="128"
+                    height="24">
+            </a>
+        </p>
+    </div>
+</footer>
+<!-- End page footer -->
+
+<!-- Mobile menu responsiveness -->
+<!-- https://bulma.io/documentation/components/navbar/ -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+        if ($navbarBurgers.length > 0) {
+            $navbarBurgers.forEach(el => {
+                el.addEventListener('click', () => {
+                    const target = el.dataset.target;
+                    const $target = document.getElementById(target);
+                    el.classList.toggle('is-active');
+                    $target.classList.toggle('is-active');
+                });
+            });
+        }
+    });
+</script>
+<!-- End mobile menu responsiveness -->
