@@ -3,13 +3,15 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Highlight Table</title>
+    <title>Heatmap</title>
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
 
     <!-- Load Font Awesome 5 (free) icons -->
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <link rel="stylesheet" href="site.css">
+    <link rel="stylesheet" href="pezanne-heatmap.css">
+    <script src="pezanne-heatmap.js"></script>
 </head>
 
 
@@ -105,37 +107,34 @@
     <section class="section">
         <div class="container content">
             <h3>Where are the calls to the SFFD being processed? When do they get most number of calls?</h3><br>
-
-            <h6>Tableau Prototype:</h6>
-
+            <h5>D3 Implementation</h5>
+            <div class="heatmap"></div>
+            <p style="font-family: sans-serif;font-weight: 200;padding-bottom:30px;">
+                Created By: Pezanne Khambatta
+                <br>
+                Source: <a href="https://data.sfgov.org/Public-Safety/Fire-Department-Calls-for-Service/nuek-vuh3">https://data.sfgov.org/Public-Safety/Fire-Department-Calls-for-Service/nuek-vuh3</a>
+              </p>
+            <br>
+            <h5>Tableau Prototype</h5>
             <div class="image is-960x500"><img src="img/ServiceCallsHandledHourly2.png"></div>
+            <h5>Warning</h5>
+            <p>The heatmap does not include calls of type 'medical incident'</p>
 
-
-            <h3>Instruction</h3>
-
+            <h5>Instruction</h5>
             <p>
                 The highlight table shows the average* number of service calls during each hour of the day. The values range from 0.008 calls to 1.8 calls in a given hour. The hourly values are mapped against the battalion (headquarters) dealing with the call.
             </p>
             <p>
                 <i>*Daily average is a measure of total calls in 2019 within the hour divided by number of days in a year.</i>
             </p>
-
-            <h3>Data Wrangling</h3>
-
+            <h5>Data Wrangling</h5>
             <p>
                 The original dataset has been used for this visualization with filter on received time. The dataset has
                 been narrowed down to calls during 2019 fiscal year. Report time, battalion and No. of reports have been used as data. </p>
-
-            <h3>Conclusion</h3>
-
+                <p>Medical related calls types have been excluded from the data, since they made B02 and B03 stand out in stark contrast against the others.</p>
+            <h5>Conclusion</h5>
 
             <p>In conclusion, it appears that battalions B02 and B03 handle a considerably larger number of service calls than the rest. B99 on the other hand, handles considerably fewer. It can also be seen that between 1am and 7am are when the least service calls are made, which makes logical sense. 10pm to 2pm and 4pm to 8pm are most busy times. </p>
-
-
-            <h3>D3 Implementation:</h3>
-            <p>For D3 implementation, I would like to get the time labels at a 45 degree angle for ease of readability. I'd like to get data-on-demand working with the help of a tooltip that gives additional details such as the average calls for that hour and the total calls for the hour.</p>
-
-
         </div>
     </section>
 
