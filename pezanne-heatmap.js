@@ -2,7 +2,7 @@
 var config = {};
 config.svg = {
     width: 960,
-    height: 500
+    height: 430
 };
 
 config.margin = { top: 90, right: 20, bottom: 10, left: 60 };
