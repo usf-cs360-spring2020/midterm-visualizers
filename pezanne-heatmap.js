@@ -235,8 +235,8 @@ d3.csv('data/sffd-calls-hourly.csv').then(data => {
 
             // get height of tooltip
             let bbox = div.node().getBoundingClientRect();
-            div.style("left", (d3.event.clientX + 10) + "px")
-            div.style("top", (d3.event.clientY - bbox.height + 10) + "px"); 1
+            div.style("left", (d3.event.pageX + 10) + "px")
+            div.style("top", (d3.event.pageY - bbox.height + 10) + "px"); 1
         })
         .on("mouseout", (d) => {
             // table remove
