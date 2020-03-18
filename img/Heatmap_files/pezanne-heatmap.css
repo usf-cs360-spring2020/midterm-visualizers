@@ -1,0 +1,28 @@
+.axis path,
+.axis line {
+    fill: none;
+    stroke: black;
+    shape-rendering: crispEdges;
+}
+
+.axis text {
+    font-family: sans-serif;
+    font-size: 11px;
+}
+
+.tooltip {
+    font-family: sans-serif;
+    font-size: 10pt;
+}
+
+.tooltip {
+    position: absolute;
+    width: auto;
+    height: auto;
+    padding: 8px;
+    background: #ddd;
+    pointer-events: none;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    text-align: left;
+}

@@ -1,0 +1,18 @@
+a {
+    text-decoration: underline;
+}
+
+.hero.is-info {
+    background-color: #fc9842 !important; 
+    background-image: linear-gradient(315deg, #fc9842 0%, #fe5f75 74%) !important;
+}
+
+.image.is-180x180 {
+    height: 180px;
+    width: 180px;
+}
+
+.image.is-960x500 {
+    width: 960px;
+    height: 500px;
+}

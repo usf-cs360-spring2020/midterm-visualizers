@@ -6,7 +6,7 @@
     <title>Heatmap</title>
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
-
+    
     <!-- Load Font Awesome 5 (free) icons -->
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <link rel="stylesheet" href="site.css">
@@ -38,64 +38,60 @@
                 <span class="icon"><i class="fas fa-home"></i></span>
                 <span>Home</span>
             </a>
-
+            
             <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
-                data-target="main-menu">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
+            data-target="main-menu">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+    
+    <div id="main-menu" class="navbar-menu has-text-weight-medium">
+        <!-- Left navbar items -->
+        <div class="navbar-start">
+            <a class="navbar-item" href="data.html" title="Data">
+                <span class="icon"><i class="fas fa-table"></i></span>
+                <span>Data</span>
+            </a>
+            
+            <!-- TODO: Modify or remove dropdown -->
+          <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">
+                  Visualizations
+                </a>
+    
+                <div class="navbar-dropdown">
+                  <a href="line.html" class="navbar-item">
+                    <span class="icon"><i class="fas fa-chart-line"></i></span>
+                    <span>Line Chart (Parisa)</span>
+                  </a>
+                  <!-- Change titles of pgs -->
+                  <a href="v2_pk.html" class="navbar-item">
+                    <span class="icon"><i class="fas fa-th"></i></span>
+                    <span>Heatmap (Pezanne)</span>
+                  </a>
+                  <a href="v3_dd.html" class="navbar-item">
+                    <span class="icon"><i class="fas fa-chart-area"></i></span>
+                    <span>Parallel Co-ordinates (Dan)</span>
+                  </a>
+    
+                </div>
+              </div>
+        </div>
+        
+        <!-- Right navbar items -->
+        <div class="navbar-end">
+            <!-- TODO: Update as needed -->
+            
+            
+            <a class="navbar-item" href="about.html" title="About">
+                <span class="icon"><i class="fas fa-info-circle"></i></span>
+                <span>About</span>
             </a>
         </div>
-
-        <div id="main-menu" class="navbar-menu has-text-weight-medium">
-            <!-- Left navbar items -->
-            <div class="navbar-start">
-                <a class="navbar-item" href="data.html" title="Data">
-                    <span class="icon"><i class="fas fa-table"></i></span>
-                    <span>Data</span>
-                </a>
-
-
-
-
-
-                <!-- TODO: Modify or remove dropdown -->
-                <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">
-                        Visualizations
-                    </a>
-
-                    <div class="navbar-dropdown">
-                        <a href="line.html" class="navbar-item">
-                            <span class="icon"><i class="fas fa-chart-line"></i></span>
-                            <span>Visualization 1(Parisa)</span>
-                        </a>
-                        <!-- Change titles of pgs -->
-                        <a href="v2_pk.html" class="navbar-item is-active">
-                            <span class="icon"><i class="fas fa-th"></i></span>
-                            <span>Visualization 2 (Pezanne)</span>
-                        </a>
-                        <a href="v3_dd.html" class="navbar-item">
-                            <span class="icon"><i class="fas fa-chart-area"></i></span>
-                            <span>Visualization 3 (Dan)</span>
-                        </a>
-
-                    </div>
-                </div>
-            </div>
-
-            <!-- Right navbar items -->
-            <div class="navbar-end">
-                <!-- TODO: Update as needed -->
-
-
-                <a class="navbar-item" href="about.html" title="About">
-                    <span class="icon"><i class="fas fa-info-circle"></i></span>
-                    <span>About</span>
-                </a>
-            </div>
-        </div>
     </div>
+</div>
 </nav>
 <!-- End page navigation -->
 
@@ -112,84 +108,119 @@
             <p style="font-family: sans-serif;font-weight: 200;padding-bottom:30px;">
                 Created By: Pezanne Khambatta
                 <br>
-                Source: <a href="https://data.sfgov.org/Public-Safety/Fire-Department-Calls-for-Service/nuek-vuh3">https://data.sfgov.org/Public-Safety/Fire-Department-Calls-for-Service/nuek-vuh3</a>
-              </p>
+                Source: <a
+                href="https://data.sfgov.org/Public-Safety/Fire-Department-Calls-for-Service/nuek-vuh3">https://data.sfgov.org/Public-Safety/Fire-Department-Calls-for-Service/nuek-vuh3</a>
+            </p>
             <br>
-            <h5>Tableau Prototype</h5>
-            <div class="image is-960x500"><img src="img/ServiceCallsHandledHourly2.png"></div>
-            <h5>Warning</h5>
-            <p>The heatmap does not include calls of type 'medical incident'</p>
-
-            <h5>Instruction</h5>
-            <p>
-                The highlight table shows the average* number of service calls during each hour of the day. The values range from 0.008 calls to 1.8 calls in a given hour. The hourly values are mapped against the battalion (headquarters) dealing with the call.
-            </p>
-            <p>
-                <i>*Daily average is a measure of total calls in 2019 within the hour divided by number of days in a year.</i>
-            </p>
-            <h5>Data Wrangling</h5>
-            <p>
-                The original dataset has been used for this visualization with filter on received time. The dataset has
-                been narrowed down to calls during 2019 fiscal year. Report time, battalion and No. of reports have been used as data. </p>
-                <p>Medical related calls types have been excluded from the data, since they made B02 and B03 stand out in stark contrast against the others.</p>
-            <h5>Conclusion</h5>
-
-            <p>In conclusion, it appears that battalions B02 and B03 handle a considerably larger number of service calls than the rest. B99 on the other hand, handles considerably fewer. It can also be seen that between 1am and 7am are when the least service calls are made, which makes logical sense. 10pm to 2pm and 4pm to 8pm are most busy times. </p>
-        </div>
-    </section>
-
-</body>
-
-
-
-
-<!-- Page footer -->
-<!-- https://bulma.io/documentation/layout/footer/ -->
-<footer class="footer">
-    <div class="content has-text-centered is-size-7">
-        <p>
-            <a href="#top">
-                <span class="fas fa-arrow-up"></span>
-                <span class="has-text-weight-medium">Back to Top</span>
-            </a>
-        </p>
-
-        <p>
-            <!-- TODO: Change to link to your Github repository -->
-            <a href="https://github.com/usf-cs360-spring2020/template-bulma" class="button is-small"
-                style="padding-left: 1em; padding-right: 1em;">
-                <i class="fab fa-github-alt"></i>&nbsp;<strong>Github</strong>
-            </a>
-
-            <a href="https://fontawesome.com/" class="button is-small" style="padding-left: 1em; padding-right: 1em;">
-                <i class="fab fa-font-awesome"></i>&nbsp;<strong>FontAwesome</strong>
-            </a>
-
-            <a href="https://bulma.io" class="button is-small">
-                <img src="https://bulma.io/images/made-with-bulma--semiblack.png" alt="Made with Bulma" width="128"
-                    height="24">
-            </a>
-        </p>
-    </div>
-</footer>
-<!-- End page footer -->
-
-<!-- Mobile menu responsiveness -->
-<!-- https://bulma.io/documentation/components/navbar/ -->
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
-
-        if ($navbarBurgers.length > 0) {
-            $navbarBurgers.forEach(el => {
-                el.addEventListener('click', () => {
-                    const target = el.dataset.target;
-                    const $target = document.getElementById(target);
-                    el.classList.toggle('is-active');
-                    $target.classList.toggle('is-active');
-                });
-            });
-        }
-    });
-</script>
-<!-- End mobile menu responsiveness -->
+            
+            <h5>Interactivity</h5>
+            
+            <p>The heatmap allows for details-on-demand via the help of a tooltip. Hover over any cell to get more
+                information, namely Time of Call, Battalion, Daily Avg. no. of Calls and Total no. of Calls.</p>
+                
+                <h5>Modifications from Prototype</h5>
+                
+                <p>It is worth mentioning that I decided to make the title more descriptive. The legend now shows a range of
+                    total values and not daily average. </p>
+                    
+                    
+                    <h5>Tableau Prototype</h5>
+                    <div class="image is-960x500"><img src="img/ServiceCallsHandledHourly2.png"></div>
+                    <h5>Warning</h5>
+                    <p><i class="fas fa-exclamation-triangle"></i>The heatmap excludes calls of type 'medical incident'</p>
+                    
+                    <h5>Instruction</h5>
+                    <p>
+                        The highlight table shows the total number of service calls during each hour of the day. The values
+                        range from 3 calls to 700 calls in a given hour. The hourly values are mapped against the battalion
+                        (headquarters) dealing with the call.
+                    </p>
+                    <h5>Data Wrangling</h5>
+                    <p>
+                        The original dataset has been used for this visualization with filter on received time. The dataset has
+                        been narrowed down to calls during 2019 fiscal year. Report time, battalion and No. of reports have been
+                        used as data. </p>
+                        <p>Medical related calls types have been excluded from the data, since they made B02 and B03 stand out in
+                            stark contrast against the others.</p>
+                            <h5>Conclusion</h5>
+                            
+                            <p>In conclusion, it appears that battalions B02 and B03 handle a considerably larger number of service
+                                calls than the rest. B99 on the other hand, handles considerably fewer. It can also be seen that between
+                                1am and 7am are when the least service calls are made, which makes logical sense. 10pm to 2pm and 4pm to
+                                8pm are most busy times. </p>
+                                
+                                <div class="content">
+                                    <blockquote>
+                                        <p>
+                                            <strong>Acknowledgements</strong>
+                                        </p>
+                                        <p>
+                                            SF Monthly Property Crime 2005 to 2015 - Sophie Engle:
+                                            <a
+                                            href="https://bl.ocks.org/sjengle/24aa9dc777bfc295a9e7">https://bl.ocks.org/sjengle/24aa9dc777bfc295a9e7</a>
+                                        </p>
+                                        <p>
+                                            Simple D3.js heatmap - Christophe Blefari:
+                                            <a
+                                            href="https://bl.ocks.org/Bl3f/cdb5ad854b376765fa99">https://bl.ocks.org/Bl3f/cdb5ad854b376765fa99</a>
+                                        </p>
+                                    </blockquote>
+                                </div>
+                            </div>
+                        </section>
+                        
+                    </body>
+                    
+                    
+                    
+                    
+                    <!-- Page footer -->
+                    <!-- https://bulma.io/documentation/layout/footer/ -->
+                    <footer class="footer">
+                        <div class="content has-text-centered is-size-7">
+                            <p>
+                                <a href="#top">
+                                    <span class="fas fa-arrow-up"></span>
+                                    <span class="has-text-weight-medium">Back to Top</span>
+                                </a>
+                            </p>
+                            
+                            <p>
+                                <!-- TODO: Change to link to your Github repository -->
+                                <a href="https://github.com/usf-cs360-spring2020/template-bulma" class="button is-small"
+                                style="padding-left: 1em; padding-right: 1em;">
+                                <i class="fab fa-github-alt"></i>&nbsp;<strong>Github</strong>
+                            </a>
+                            
+                            <a href="https://fontawesome.com/" class="button is-small" style="padding-left: 1em; padding-right: 1em;">
+                                <i class="fab fa-font-awesome"></i>&nbsp;<strong>FontAwesome</strong>
+                            </a>
+                            
+                            <a href="https://bulma.io" class="button is-small">
+                                <img src="https://bulma.io/images/made-with-bulma--semiblack.png" alt="Made with Bulma" width="128"
+                                height="24">
+                            </a>
+                        </p>
+                    </div>
+                </footer>
+                <!-- End page footer -->
+                
+                <!-- Mobile menu responsiveness -->
+                <!-- https://bulma.io/documentation/components/navbar/ -->
+                <script>
+                    document.addEventListener('DOMContentLoaded', () => {
+                        const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+                        
+                        if ($navbarBurgers.length > 0) {
+                            $navbarBurgers.forEach(el => {
+                                el.addEventListener('click', () => {
+                                    const target = el.dataset.target;
+                                    const $target = document.getElementById(target);
+                                    el.classList.toggle('is-active');
+                                    $target.classList.toggle('is-active');
+                                });
+                            });
+                        }
+                    });
+                </script>
+                <!-- End mobile menu responsiveness -->

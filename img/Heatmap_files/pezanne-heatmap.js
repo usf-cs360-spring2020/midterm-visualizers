@@ -5,7 +5,7 @@ config.svg = {
     height: 500
 };
 
-config.margin = { top: 90, right: 20, bottom: 10, left: 60 };
+config.margin = { top: 80, right: 20, bottom: 10, left: 40 };
 
 config.plot = {
     width: config.svg.width - config.margin.right - config.margin.left,
@@ -18,9 +18,9 @@ config.legend = {
 };
 
 
-var itemSize = 30,
+var itemSize = 35,
     cellSize = itemSize - 1,
-    margin = { top: 60, right: 20, bottom: 20, left: 50 };
+    margin = { top: 60, right: 20, bottom: 20, left: 40 };
 
 d3.select("rect.cell")
 
@@ -76,48 +76,11 @@ d3.csv('data/sffd-calls-hourly.csv').then(data => {
             .attr("x", 0)
             .attr("y", 0)
             .attr("dx", 0)
-            .attr("dy", 0)
+            .attr("dy", "18px")
             .attr("text-anchor", "left")
             .attr("font-size", "18px");
         title.attr("transform", translate(0, -60));
     };
-
-    var drawAxisTitles = () => {
-        const yGroup = svg.append('g');
-      
-        // set the position by translating the group
-        yGroup.attr('transform', translate(-55, 160));
-      
-        const yTitle = yGroup.append('text')
-          .attr('class', 'axis-title')
-          .text('Battalion');
-      
-        // keep x, y at 0, 0 for rotation around the origin
-        yTitle.attr('x', 0);
-        yTitle.attr('y', 0);
-      
-        yTitle.attr('dy', '1.75ex');
-        yTitle.attr('text-anchor', 'middle');
-        yTitle.attr('transform', 'rotate(-90)');
-        yTitle.attr('font-size', '15px');
-        yTitle.attr('font-weight', '500');
-
-        const xGroup = svg.append('g');
-        xGroup.attr('transform', translate(400, -45));
-
-        const xTitle = xGroup.append('text')
-          .attr('class', 'axis-title')
-          .text('Hour');
-
-          // keep x, y at 0, 0 for rotation around the origin
-          xTitle.attr('x', 0);
-          xTitle.attr('y', 0);
-      
-          xTitle.attr('dy', '1.75ex');
-          xTitle.attr('text-anchor', 'middle');
-          xTitle.attr('font-size', '15px');
-          xTitle.attr('font-weight', '500');
-      }
 
     var drawLegend = function () {
         // our color scale doesn't have an invert() function
@@ -147,7 +110,7 @@ d3.csv('data/sffd-calls-hourly.csv').then(data => {
         // will translate it to the appropriate location later
         var legend = svg.append("g")
             .attr("id", "legend")
-            .attr("transform", translate(520, -55));
+            .attr("transform", translate(640, -60));
 
         // draw the color rectangle with gradient
         legend.append("rect")
@@ -177,8 +140,8 @@ d3.csv('data/sffd-calls-hourly.csv').then(data => {
             .call(legendAxis)
 
         // calculate how much to shift legend group to fit in our plot area nicely
-        var xshift = 520;
-        var yshift = -55;
+        var xshift = config.svg.width - 250;
+        var yshift = -60;
         legend.attr("transform", translate(xshift, yshift));
     };
 
@@ -266,7 +229,10 @@ d3.csv('data/sffd-calls-hourly.csv').then(data => {
         .attr("dx", ".8em")
         .attr("dy", ".5em")
         .attr("transform", "rotate(-35)");
-    drawAxisTitles();
+
+
+
+
     drawTitle();
     drawLegend();
 });
