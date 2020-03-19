@@ -107,7 +107,7 @@ d3.csv('data/sffd-calls-hourly.csv').then(data => {
 
         const xTitle = xGroup.append('text')
           .attr('class', 'axis-title')
-          .text('Hour');
+          .text('Incident Time');
 
           // keep x, y at 0, 0 for rotation around the origin
           xTitle.attr('x', 0);
@@ -235,8 +235,8 @@ d3.csv('data/sffd-calls-hourly.csv').then(data => {
 
             // get height of tooltip
             let bbox = div.node().getBoundingClientRect();
-            div.style("left", (d3.event.pageX + 10) + "px")
-            div.style("top", (d3.event.pageY - bbox.height + 10) + "px"); 1
+            div.style("left", (d3.event.pageX + 15) + "px")
+            div.style("top", (d3.event.pageY - bbox.height - 10) + "px"); 1
         })
         .on("mouseout", (d) => {
             // table remove
