@@ -2,6 +2,13 @@
 <html>
 
 <head>
+    <!-- Load d3.js -->
+    <script src="https://d3js.org/d3.v5.js"></script>
+
+    <!-- Load parallel-d3.js -->
+    <script src="js/parallel-d3.js"></script>
+
+
     <meta charset="utf-8">
     <title>Parallel Coordinates</title>
     <script src="https://d3js.org/d3.v5.min.js"></script>
@@ -9,6 +16,7 @@
 
     <!-- Load Font Awesome 5 (free) icons -->
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
     <link rel="stylesheet" href="site.css">
 </head>
 
@@ -115,22 +123,56 @@
             <h3>Instruction</h3>
 
             <p>
-                The parallel coordiantes visualization depicts the number of dispatched units (each y-axis is a unit type) for each batallion in 2019 .
+                The parallel coordiantes visualization depicts the number of dispatched units (each y-axis is a unit type) for each batallion in 2019. 
             </p>
 
             <h3>Data Wrangling</h3>
 
-            <p>
-                The original dataset counting little over 300k lines was mapped down to 10 observations. An observation looks at a battalion and for each unit type it summarizes the total number of dispatches for that unit. </p>
+            <p> The original dataset counting little over 300k lines was mapped down to 10 observations. An observation looks at a battalion and for each unit type it summarizes the total number of dispatches for that unit.</p>
+            <p>You can find the filtered data <a href="../d3-vis/h1-heatmap/airlines-clean.csv">here</a>.</p>
+
+                `
+
+
+            <!-- Add note about excluding B99 (include the image) -->
+
+            <h3>Note on data exclusion</h3>
+
+            <ol>
+                <li>Exclusion of the battalion B99 dute to a low-level of engagement. As you can see from the following prototype, battalion B99 is a an outlier in the volume of calls</li>
+                <div class="image is-960x500"><img src="img/parallel-proto.png"></div>
+                <li>Exclusion of the following Unit Types:</li>
+                <ul>
+                    <li>Airport</li>
+                    <li>Investigation</li>
+                    <li>Rescue Squad</li>
+                    <p>Again, the reason is extremely low volume of call handled by these Unit Types.</p>
+                </ul>
+                <li>Highly selective public,</li>
+                <li>Highly selective private,</li>
+                <li>Selective public,</li>
+                <li>Selective private</li>
+              </ol>
+
 
             <h3>Conclusion</h3>
 
 
-            <p>We can see that the most active batalions are B02 and B03. We can also notice that certain batallions are probably better equiped with certain units and hence use them more often in a variety of situations. That is why we see lines overlapping in the bottom half of the visualization.  </p>
+            <p>We can see that the most active batalions are B02 and B03. We can also notice that certain batallions are probably better equiped with certain units and hence use them more often in a variety of situations. 
+                
+                We can also conclude that battalions likely respond in similar manners. Thus, for quite a few of them we see overlapping patterns.</p>
+
+                Interestingly enough, we can make some futher conclusions when we combine findings from other visualization we observed:
+
+                <div class="image is-960x500"><img src="img/parallel-proto.png"></div>
+                
+                Here, we can see that the lowest volume of calls is in regards to Fire. It's a red line sitting at the bottom, with volume negligent compared to other call types. We would associate Engine and Truck with these calls - both unit types equipped to primarly fight fires. So we might say, well if the number of Fire calls is low, that probably measn that these two unit types, Engine and Truck are dispatched infrequently compared to others. However, when we observe the above parallel coordinates and focus on the two y-axis that represent them, it is clear that they are one of the most dispatched units. Why is that? *Try to explain this*
 
 
             <h3>D3 Implementation:</h3>
-            <p>There are certain limitations with parallel coordinates prorotyping tools. For this reason it's a bit difficult to test quickly different arrangments in a visualization. I would love to introduce brushing for interactivity and potentially rethink the use of batallions in color encoding.</p>
+
+                <!-- Graph -->
+                <div id="parallel"></div>
 
 
         </div>
