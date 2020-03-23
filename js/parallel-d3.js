@@ -19,7 +19,7 @@
     let battalions = ["B01", "B02", "B03", "B04", "B05", "B06", "B07", "B08", "B09", "B10"]
     
 
-    d3.csv("../data/datapoints.csv").then(function(data) {
+    d3.csv("data/datapoints.csv").then(function(data) {
         
         var color = d3.scaleOrdinal()
             .domain(battalions.reverse())
