@@ -107,7 +107,7 @@ d3.csv('data/sffd-calls-hourly.csv').then(data => {
 
         const xTitle = xGroup.append('text')
           .attr('class', 'axis-title')
-          .text('Incident Time');
+          .text('Time of Call');
 
           // keep x, y at 0, 0 for rotation around the origin
           xTitle.attr('x', 0);
