@@ -16,3 +16,8 @@ a {
     width: 960px;
     height: 500px;
 }
+
+.image.is-760x650 {
+    width: 760px;
+    height: 650px;
+}

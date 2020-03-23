@@ -3,12 +3,6 @@
 
 <head>
     <!-- Load d3.js -->
-    <script src="https://d3js.org/d3.v5.js"></script>
-
-    <!-- Load parallel-d3.js -->
-    <script src="js/parallel-d3.js"></script>
-
-
     <meta charset="utf-8">
     <title>Parallel Coordinates</title>
     <script src="https://d3js.org/d3.v5.min.js"></script>
@@ -112,8 +106,8 @@
 <body>
     <section class="section">
         <div class="container content">
-            <h3>How do batallions use their resources and units to handle different situations?</h3><br>
-
+            <h2>How do batallions use their resources and units to handle different situations?</h2><br>
+            <h3>Dispatched Units per Battalion for 2019</h3>        
             <h6>Prototype:</h6>
 
             <div class="image is-960x500"><img src="img/parallel-proto.png"></div>
@@ -123,15 +117,13 @@
             <h3>Instruction</h3>
 
             <p>
-                The parallel coordiantes visualization depicts the number of dispatched units (each y-axis is a unit type) for each batallion in 2019. 
+                The parallel coordiantes visualization depicts the number of dispatched units (each y-axis is a unit type) for each batallion in 2019. When you hover over a particular line or legend item, that battalion will come to the front via brushing.
             </p>
 
             <h3>Data Wrangling</h3>
 
             <p> The original dataset counting little over 300k lines was mapped down to 10 observations. An observation looks at a battalion and for each unit type it summarizes the total number of dispatches for that unit.</p>
-            <p>You can find the filtered data <a href="../d3-vis/h1-heatmap/airlines-clean.csv">here</a>.</p>
-
-                `
+            <p>You can find the filtered data <a href="data/datapoints.csv">here</a>.</p>
 
 
             <!-- Add note about excluding B99 (include the image) -->
@@ -139,43 +131,72 @@
             <h3>Note on data exclusion</h3>
 
             <ol>
-                <li>Exclusion of the battalion B99 dute to a low-level of engagement. As you can see from the following prototype, battalion B99 is a an outlier in the volume of calls</li>
-                <div class="image is-960x500"><img src="img/parallel-proto.png"></div>
+                <li>Exclusion of the battalion B99 due to a low-level of engagement. As you can see from the following prototype, battalion B99 is a an outlier in the volume of calls:</li>
+                <div class="image is-760x650"><img src="img/exclusion-B99-proto.png"></div>
+                <!-- <br><br><br><br><br><br> -->
                 <li>Exclusion of the following Unit Types:</li>
                 <ul>
                     <li>Airport</li>
                     <li>Investigation</li>
                     <li>Rescue Squad</li>
-                    <p>Again, the reason is extremely low volume of call handled by these Unit Types.</p>
                 </ul>
-                <li>Highly selective public,</li>
-                <li>Highly selective private,</li>
-                <li>Selective public,</li>
-                <li>Selective private</li>
+                <p>Again, the reason is extremely low volume of calls handled by these Unit Types.</p>
               </ol>
 
 
             <h3>Conclusion</h3>
 
 
-            <p>We can see that the most active batalions are B02 and B03. We can also notice that certain batallions are probably better equiped with certain units and hence use them more often in a variety of situations. 
+            <p>We can see that the most active batalions are B02 and B03. We can also assume that certain batallions are probably better equiped with certain units and hence use them more often in a variety of situations. 
                 
                 We can also conclude that battalions likely respond in similar manners. Thus, for quite a few of them we see overlapping patterns.</p>
 
-                Interestingly enough, we can make some futher conclusions when we combine findings from other visualization we observed:
+                <p>Interestingly enough, we can make some futher conclusions when we combine findings from other visualization we observed:</p>
 
-                <div class="image is-960x500"><img src="img/parallel-proto.png"></div>
+                <div class="image is-960x500"><img src="line.jpg"></div>
+
                 
-                Here, we can see that the lowest volume of calls is in regards to Fire. It's a red line sitting at the bottom, with volume negligent compared to other call types. We would associate Engine and Truck with these calls - both unit types equipped to primarly fight fires. So we might say, well if the number of Fire calls is low, that probably measn that these two unit types, Engine and Truck are dispatched infrequently compared to others. However, when we observe the above parallel coordinates and focus on the two y-axis that represent them, it is clear that they are one of the most dispatched units. Why is that? *Try to explain this*
+            <p>Here, we can see that the <u>lowest</u> volume of calls is in regards to 'Fire' call type. It's a <font color="red">red line</font> sitting at the bottom, with volume insignificant compared to other call types. We would associate 'Engine' and 'Truck' unit types with these calls - both equipped to primarly fight fires. We can find an explanation about the difference between these two unit types:</p>
 
+                <div class="content">
+                    <blockquote>
+                        <p>
+                            Since Fire Engines and Fire Trucks perform significantly different functions at a fire scene, they are very different. Fire engines are equipped with hoses and water so that personnel can aggressively fight the fire. Fire Trucks are like the firefighter's tool box -- carrying ladders, rescue equipment and other tools to enable personnel to support firefighting activities.
+                        </p>
 
-            <h3>D3 Implementation:</h3>
+                        <p>
+                        The terms fire truck and fire engine are used interchangeably by some folks. They have similar meanings in their general applications. But toss out the "fire" and shorten the terms to truck and engine and now we're talking.
+                        </p>
+                        <p>
+                            <i>Source: <a href="https://www.fairmountfire.org/truck-vs-engine.html">Fairmount Fire Department</a></i>
+                        </p>
+                    </blockquote>
+                </div>
+                     
+                So we might say, well if the number of 'Fire' calls is low, that probably means that these two unit types, 'Engine' and 'Truck' are dispatched infrequently compared to others. However, when we observe the above parallel coordinates and focus on the two y-axis that represent them, it is clear that they are one of the most dispatched units. </p>
+                <p>Why is that?</p>
 
-                <!-- Graph -->
-                <div id="parallel"></div>
+                <p>According to the National Fire Protection Association, a small fraction of fire departments calls involve actual fires. In most scenarios, their responses are medical calls. The result is that fire departments have become all-hazards departments, with staff trained to respond to fires, emergency medical incidents, hazardous materials, and much more. Many firefighters are certified as emergency medical technicians and most departments certify all of their firefighters with basic first aid and CPR/AED training so they can begin patient care before the ambulance arrives.
+                </p>
 
+                <p>Another reason is that dispatchers are often given incomplete information. Because of this, units are dispatched on a worst-case scenario. </p>
+                Units have no way of knowing what they will encounter on a call until they arrive. They work in a “what if” and “all risk” approach.
+            </p>
+
+            <p>Perhaps we should rename Fire Departments to a term that better encompasses their duties.</p>
+            <h3>Dispatched Units per Battalion for 2019</h3>        
+            <!-- Graph -->
+            <div id="parallel"></div>
+            <p>
+                <i>Author: Dejan Djokic</i><br>
+                <i>Original Data Source: <a href="https://data.sfgov.org/Public-Safety/Fire-Department-Calls-for-Service/nuek-vuh3/data">SF Gov</a></i>
+                <br<br>
+                <p>Inspiration: <a href="https://usf-cs360-spring2020.github.io/homework2-djokicx/posts/hw-2">Homework 2</a></p>
+            </p>
 
         </div>
+
+
     </section>
 
 </body>
@@ -232,4 +253,8 @@
         }
     });
 </script>
+<script src="https://d3js.org/d3.v5.js"></script>
+
+<!-- Load parallel-d3.js -->
+<script src="js/parallel-d3.js"></script>
 <!-- End mobile menu responsiveness -->
