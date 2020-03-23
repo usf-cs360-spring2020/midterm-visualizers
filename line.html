@@ -56,27 +56,27 @@
 
         <!-- TODO: Modify or remove dropdown -->
         <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link">
-            Visualizations
-          </a>
-
-          <div class="navbar-dropdown">
-            <a href="line.html" class="navbar-item is-active">
-              <span class="icon"><i class="fas fa-chart-line"></i></span>
-              <span>Visualization 1(Parisa)</span>
-            </a>
-            <!-- Change titles of pgs -->
-            <a href="v2_pk.html" class="navbar-item">
-              <span class="icon"><i class="fas fa-th"></i></span>
-              <span>Visualization 2 (Pezanne)</span>
-            </a>
-            <a href="v3_dd.html" class="navbar-item">
-              <span class="icon"><i class="fas fa-chart-area"></i></span>
-              <span>Visualization 3 (Dan)</span>
+            <a class="navbar-link">
+              Visualizations
             </a>
 
+            <div class="navbar-dropdown">
+              <a href="line.html" class="navbar-item">
+                <span class="icon"><i class="fas fa-chart-line"></i></span>
+                <span>Line Chart (Parisa)</span>
+              </a>
+              <!-- Change titles of pgs -->
+              <a href="v2_pk.html" class="navbar-item">
+                <span class="icon"><i class="fas fa-th"></i></span>
+                <span>Heatmap (Pezanne)</span>
+              </a>
+              <a href="v3_dd.html" class="navbar-item">
+                <span class="icon"><i class="fas fa-chart-area"></i></span>
+                <span>Parallel Co-ordinates (Dan)</span>
+              </a>
+
+            </div>
           </div>
-        </div>
       </div>
 
       <!-- Right navbar items -->
@@ -123,6 +123,9 @@
     <div class="container content">
       <h3>What Are The Reasons For Calls To Fire Department During Each Day?</h3><br>
 
+      <h6>D3 Implementation:</h6>
+    <div id="chart"></div>
+
       <h6>Tableau Prototype:</h6>
 
       <figure class="media-left">
@@ -152,15 +155,317 @@
         5PM. In contrast, lowest service calls are associated with fire. </p>
 
 
-      <h6>D3 Implementation:</h6>
-      <p>For D3 implementation I would like to use tooltip such that mousing over specific points of data launches a
-        pop-up that expresses more information on that particular piece of data. </p>
-
-
     </div>
   </section>
 
 </body>
+
+
+<script>
+
+var data = [
+  {
+    name: "Non Life-threatening",
+    values: [
+      {time: "0", Number: "2575"},
+      {time: "1", Number: "2198"},
+      {time: "2", Number: "2129"},
+      {time: "3", Number: "1745"},
+      {time: "4", Number: "1519"},
+      {time: "5", Number: "1641"},
+      {time: "6", Number: "1934"},
+      {time: "7", Number: "2645"},
+      {time: "8", Number: "3152"},
+      {time: "9", Number: "3795"},
+      {time: "10", Number: "4060"},
+      {time: "11", Number: "4143"},
+      {time: "12", Number: "4499"},
+      {time: "13", Number: "4356"},
+      {time: "14", Number: "4437"},
+      {time: "15", Number: "4342"},
+      {time: "16", Number: "4732"},
+      {time: "17", Number: "4368"},
+      {time: "18", Number: "4298"},
+      {time: "19", Number: "3965"},
+      {time: "20", Number: "3770"},
+      {time: "21", Number: "3445"},
+      {time: "22", Number: "3264"},
+      {time: "23", Number: "2777"}
+    ]
+  },
+  {
+    name: "Life-Threatening",
+    values: [
+      {time: "0", Number: "4781"},
+      {time: "1", Number: "4557"},
+      {time: "2", Number: "4037"},
+      {time: "3", Number: "3109"},
+      {time: "4", Number: "2724"},
+      {time: "5", Number: "2870"},
+      {time: "6", Number: "3528"},
+      {time: "7", Number: "4528"},
+      {time: "8", Number: "5959"},
+      {time: "9", Number: "7363"},
+      {time: "10", Number: "7707"},
+      {time: "11", Number: "8447"},
+      {time: "12", Number: "8773"},
+      {time: "13", Number: "8774"},
+      {time: "14", Number: "8656"},
+      {time: "15", Number: "8334"},
+      {time: "16", Number: "8371"},
+      {time: "17", Number: "8662"},
+      {time: "18", Number: "7982"},
+      {time: "19", Number: "7669"},
+      {time: "20", Number: "7247"},
+      {time: "21", Number: "6681"},
+      {time: "22", Number: "6168"},
+      {time: "23", Number: "5401"}
+    ]
+  },
+  {
+    name: "Fire",
+    values: [
+      {time: "0", Number: "309"},
+      {time: "1", Number: "298"},
+      {time: "2", Number: "228"},
+      {time: "3", Number: "263"},
+      {time: "4", Number: "324"},
+      {time: "5", Number: "216"},
+      {time: "6", Number: "237"},
+      {time: "7", Number: "273"},
+      {time: "8", Number: "519"},
+      {time: "9", Number: "387"},
+      {time: "10", Number: "435"},
+      {time: "11", Number: "547"},
+      {time: "12", Number: "461"},
+      {time: "13", Number: "629"},
+      {time: "14", Number: "673"},
+      {time: "15", Number: "567"},
+      {time: "16", Number: "716"},
+      {time: "17", Number: "750"},
+      {time: "18", Number: "669"},
+      {time: "19", Number: "593"},
+      {time: "20", Number: "527"},
+      {time: "21", Number: "424"},
+      {time: "22", Number: "404"},
+      {time: "23", Number: "316"}
+    ]
+  },
+
+  {
+    name: "Alarm",
+    values: [
+      {time: "0", Number: "2277"},
+      {time: "1", Number: "1778"},
+      {time: "2", Number: "1701"},
+      {time: "3", Number: "1758"},
+      {time: "4", Number: "1316"},
+      {time: "5", Number: "1567"},
+      {time: "6", Number: "2003"},
+      {time: "7", Number: "2494"},
+      {time: "8", Number: "3165"},
+      {time: "9", Number: "3809"},
+      {time: "10", Number: "4185"},
+      {time: "11", Number: "4166"},
+      {time: "12", Number: "4040"},
+      {time: "13", Number: "4102"},
+      {time: "14", Number: "3935"},
+      {time: "15", Number: "3702"},
+      {time: "16", Number: "3856"},
+      {time: "17", Number: "4007"},
+      {time: "18", Number: "4253"},
+      {time: "19", Number: "4101"},
+      {time: "20", Number: "3879"},
+      {time: "21", Number: "3253"},
+      {time: "22", Number: "3099"},
+      {time: "23", Number: "2574"}
+    ]
+  },
+];
+
+
+
+var width = 960;
+var height = 500;
+var margin = 150;
+var duration = 250;
+
+var lineOpacity = "0.25";
+var lineOpacityHover = "0.85";
+var otherLinesOpacityHover = "0.1";
+var lineStroke = "1.5px";
+var lineStrokeHover = "2.5px";
+
+var circleOpacity = '0.85';
+var circleOpacityOnLineHover = "0.25"
+var circleRadius = 3;
+var circleRadiusHover = 6;
+
+
+/* Format Data */
+var parseDate = d3.timeParse("%H");
+data.forEach(function(d) { 
+  d.values.forEach(function(d) {
+    d.time = parseDate(d.time);
+    d.Number = +d.Number;    
+  });
+});
+
+
+/* Scale */
+var xScale = d3.scaleTime()
+  .domain([parseDate("0"), parseDate("24")])
+  .range([0, width-margin]);
+
+  console.log(data[0].values);
+
+var yScale = d3.scaleLinear()
+  .domain([0, 9000])
+  .range([height-margin, 0]);
+
+var color = d3.scaleOrdinal(d3.schemeCategory10);
+  
+
+/* Add SVG */
+var svg = d3.select("#chart").append("svg")
+  .attr("width", width)
+  .attr("height", height)
+  .append('g')
+  .attr("transform", `translate(${margin-50}, ${margin-50})`);
+
+// Handmade legend
+svg.append("circle").attr("cx",150).attr("cy",-50).attr("r", 3).style("fill", "#1f77b4")
+svg.append("circle").attr("cx",350).attr("cy",-50).attr("r", 3).style("fill", "#ff7f0e")
+svg.append("circle").attr("cx",550).attr("cy",-50).attr("r", 3).style("fill", "#2ca02c")
+svg.append("circle").attr("cx",750).attr("cy",-50).attr("r", 3).style("fill", "#d62728")
+
+
+
+svg.append("text").attr("x", 40).attr("y", -50).text("Non Life- Threatening").style("font-size", "10px").attr("alignment-baseline","middle")
+svg.append("text").attr("x", 260).attr("y", -50).text("Life-Threatening").style("font-size", "10px").attr("alignment-baseline","middle")
+svg.append("text").attr("x", 517).attr("y", -50).text("Fire").style("font-size", "10px").attr("alignment-baseline","middle")
+svg.append("text").attr("x", 706).attr("y", -50).text("Alarm").style("font-size", "10px").attr("alignment-baseline","middle")
+
+
+/* Add line into SVG */
+var line = d3.line()
+  .x(d => xScale(d.time))
+  .y(d => yScale(d.Number));
+
+let lines = svg.append('g')
+  .attr('class', 'lines');
+
+lines.selectAll('.line-group')
+  .data(data).enter()
+  .append('g')
+  .attr('class', 'line-group')  
+  .on("mouseover", function(d, i) {
+      svg.append("text")
+        .attr("class", "title-text")
+        .style("fill", color(i))        
+        .text(d.name)
+        .attr("text-anchor", "middle")
+        .attr("x", (width-margin)/2)
+        .attr("y", 5);
+    })
+  .on("mouseout", function(d) {
+      svg.select(".title-text").remove();
+    })
+  .append('path')
+  .attr('class', 'line')  
+  .attr('d', d => line(d.values))
+  .style('stroke', (d, i) => color(i))
+  .style('opacity', lineOpacity)
+  .on("mouseover", function(d) {
+      d3.selectAll('.line')
+          .style('opacity', otherLinesOpacityHover);
+      d3.selectAll('.circle')
+          .style('opacity', circleOpacityOnLineHover);
+      d3.select(this)
+        .style('opacity', lineOpacityHover)
+        .style("stroke-width", lineStrokeHover)
+        .style("cursor", "pointer");
+    })
+  .on("mouseout", function(d) {
+      d3.selectAll(".line")
+          .style('opacity', lineOpacity);
+      d3.selectAll('.circle')
+          .style('opacity', circleOpacity);
+      d3.select(this)
+        .style("stroke-width", lineStroke)
+        .style("cursor", "none");
+    });
+
+
+/* Add circles in the line */
+lines.selectAll("circle-group")
+  .data(data).enter()
+  .append("g")
+  .style("fill", (d, i) => color(i))
+  .selectAll("circle")
+  .data(d => d.values).enter()
+  .append("g")
+  .attr("class", "circle")  
+  .on("mouseover", function(d) {
+      d3.select(this)     
+        .style("cursor", "pointer")
+        .append("text")
+        .attr("class", "text")
+        .text(`${d.Number}`)
+        .attr("x", d => xScale(d.time) + 5)
+        .attr("y", d => yScale(d.Number) - 10);
+    })
+  .on("mouseout", function(d) {
+      d3.select(this)
+        .style("cursor", "none")  
+        .transition()
+        .duration(duration)
+        .selectAll(".text").remove();
+    })
+  .append("circle")
+  .attr("cx", d => xScale(d.time))
+  .attr("cy", d => yScale(d.Number))
+  .attr("r", circleRadius)
+  .style('opacity', circleOpacity)
+  .on("mouseover", function(d) {
+        d3.select(this)
+          .transition()
+          .duration(duration)
+          .attr("r", circleRadiusHover);
+      })
+    .on("mouseout", function(d) {
+        d3.select(this) 
+          .transition()
+          .duration(duration)
+          .attr("r", circleRadius);  
+      });
+
+
+/* Add Axis into SVG */
+var xAxis = d3.axisBottom(xScale).ticks(23);
+var yAxis = d3.axisLeft(yScale).ticks(5);
+
+svg.append("g")
+  .attr("class", "x axis")
+  .attr("transform", `translate(0, ${height-margin})`)
+  .call(xAxis.tickFormat(d3.timeFormat("%H %p")))
+  .append('text')
+  .attr("x", 350)
+  .attr("y", 35)
+  .attr("fill", "#000")
+  .text("Hours");
+
+svg.append("g")
+  .attr("class", "y axis")
+  .call(yAxis)
+  .append('text')
+  .attr("y", 15)
+  .attr("transform", "rotate(-90)")
+  .attr("fill", "#000")
+  .text("Number of Calls");
+
+</script>
+
 
 
 

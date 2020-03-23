@@ -3,13 +3,15 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Highlight Table</title>
+    <title>Heatmap</title>
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
 
     <!-- Load Font Awesome 5 (free) icons -->
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <link rel="stylesheet" href="site.css">
+    <link rel="stylesheet" href="pezanne-heatmap.css">
+    <script src="pezanne-heatmap.js"></script>
 </head>
 
 
@@ -53,10 +55,6 @@
                     <span>Data</span>
                 </a>
 
-
-
-
-
                 <!-- TODO: Modify or remove dropdown -->
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">
@@ -66,16 +64,16 @@
                     <div class="navbar-dropdown">
                         <a href="line.html" class="navbar-item">
                             <span class="icon"><i class="fas fa-chart-line"></i></span>
-                            <span>Visualization 1(Parisa)</span>
+                            <span>Line Chart (Parisa)</span>
                         </a>
                         <!-- Change titles of pgs -->
-                        <a href="v2_pk.html" class="navbar-item is-active">
+                        <a href="v2_pk.html" class="navbar-item">
                             <span class="icon"><i class="fas fa-th"></i></span>
-                            <span>Visualization 2 (Pezanne)</span>
+                            <span>Heatmap (Pezanne)</span>
                         </a>
                         <a href="v3_dd.html" class="navbar-item">
                             <span class="icon"><i class="fas fa-chart-area"></i></span>
-                            <span>Visualization 3 (Dan)</span>
+                            <span>Parallel Co-ordinates (Dan)</span>
                         </a>
 
                     </div>
@@ -105,37 +103,86 @@
     <section class="section">
         <div class="container content">
             <h3>Where are the calls to the SFFD being processed? When do they get most number of calls?</h3><br>
+            
+            <h5>Context</h5>
+            <p>Below is a map of San Francisco showing the regions where different battalions (01 through 10) operate. Battalion 99 shows up in the dataset but I have not come across any other information about it. It is, however, still present in the heatmap.</p>
+            <img src="img/battalions-map.jpg" style="width: 400px;margin-bottom: 30px;" alt="">
+            <p>Source: <a href="https://i.pinimg.com/originals/4f/fa/ec/4ffaec121b921f58a69ba5fae64d7a72.jpg">https://i.pinimg.com/originals/4f/fa/ec/4ffaec121b921f58a69ba5fae64d7a72.jpg</a></p>
+            
+            
+            <h5>D3 Implementation</h5>
+            <div class="heatmap"></div>
+            
+            <p style="font-family: sans-serif;font-size: 12px;font-weight: 200;padding-bottom:30px;">
+                Created By: Pezanne Khambatta
+                <br>
+                Source: <a
+                    href="https://data.sfgov.org/Public-Safety/Fire-Department-Calls-for-Service/nuek-vuh3">https://data.sfgov.org/Public-Safety/Fire-Department-Calls-for-Service/nuek-vuh3</a>
+            </p>
+            <br>
+            <h5>Interactivity</h5>
 
-            <h6>Tableau Prototype:</h6>
+            <p>The heatmap allows for details-on-demand via the help of a tooltip. Hover over any cell to get more
+                information, namely Time of Call, Battalion, Daily Avg. no. of Calls and Total no. of Calls.</p>
 
+            <br>
+            <h5>Tableau Prototype</h5>
             <div class="image is-960x500"><img src="img/ServiceCallsHandledHourly2.png"></div>
+            
+            <h5>Modifications from Prototype</h5>
+
+            <p>It is worth mentioning that I decided to make the title more descriptive. "Incident Time" now correctly reads as "Time of Call". The legend now shows a range of
+                total values and not daily average. </p>
 
 
-            <h3>Instruction</h3>
+            <br>
+            <h5>Warning</h5>
+            <p><i class="fas fa-exclamation-triangle"></i>The heatmap excludes calls of type 'medical incident'</p>
 
+            <br>
+            <h5>Instruction & Data Encoding</h5>
             <p>
-                The highlight table shows the average* number of service calls during each hour of the day. The values range from 0.008 calls to 1.8 calls in a given hour. The hourly values are mapped against the battalion (headquarters) dealing with the call.
+                The heatmap encodes Battalions on the y-axis and Time of Call on the x-axis. The color of the cells
+                represents the total number of calls for that cell.
             </p>
             <p>
-                <i>*Daily average is a measure of total calls in 2019 within the hour divided by number of days in a year.</i>
+                It shows the total number of service calls during each hour of the day. The values
+                range from 3 calls to 700 calls in a given hour. The hourly values are mapped against the battalion
+                (headquarters) dealing with the call.
             </p>
-
-            <h3>Data Wrangling</h3>
-
+            <br>
+            <h5>Data Wrangling</h5>
             <p>
                 The original dataset has been used for this visualization with filter on received time. The dataset has
-                been narrowed down to calls during 2019 fiscal year. Report time, battalion and No. of reports have been used as data. </p>
+                been narrowed down to calls during 2019 fiscal year. Report time, battalion and No. of reports have been
+                used as data. </p>
+            <p>Medical related calls types have been excluded from the data, since they made B02 and B03 stand out in
+                stark contrast against the others.</p>
+            <br>
+            <h5>Conclusion</h5>
 
-            <h3>Conclusion</h3>
+            <p>In conclusion, it appears that battalions B02 and B03 handle a considerably larger number of service
+                calls than the rest. B99 on the other hand, handles considerably fewer. It can also be seen that between
+                1am and 7am are when the least service calls are made, which makes logical sense. 10pm to 2pm and 4pm to
+                8pm are most busy times. </p>
 
-
-            <p>In conclusion, it appears that battalions B02 and B03 handle a considerably larger number of service calls than the rest. B99 on the other hand, handles considerably fewer. It can also be seen that between 1am and 7am are when the least service calls are made, which makes logical sense. 10pm to 2pm and 4pm to 8pm are most busy times. </p>
-
-
-            <h3>D3 Implementation:</h3>
-            <p>For D3 implementation, I would like to get the time labels at a 45 degree angle for ease of readability. I'd like to get data-on-demand working with the help of a tooltip that gives additional details such as the average calls for that hour and the total calls for the hour.</p>
-
-
+            <div class="content">
+                <blockquote>
+                    <p>
+                        <strong>Acknowledgements</strong>
+                    </p>
+                    <p>
+                        SF Monthly Property Crime 2005 to 2015 - Sophie Engle:
+                        <a
+                            href="https://bl.ocks.org/sjengle/24aa9dc777bfc295a9e7">https://bl.ocks.org/sjengle/24aa9dc777bfc295a9e7</a>
+                    </p>
+                    <p>
+                        Simple D3.js heatmap - Christophe Blefari:
+                        <a
+                            href="https://bl.ocks.org/Bl3f/cdb5ad854b376765fa99">https://bl.ocks.org/Bl3f/cdb5ad854b376765fa99</a>
+                    </p>
+                </blockquote>
+            </div>
         </div>
     </section>
 
