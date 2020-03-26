@@ -17,13 +17,14 @@
     console.log(svg);
     let tierNames = ["Chief","Engine","Medic","Private","Rescue Captain","Truck","Support"]
     let battalions = ["B01", "B02", "B03", "B04", "B05", "B06", "B07", "B08", "B09", "B10"]
+    let colores_g = ["#006400", "#000080", "#b03060", "#ff0000", "#ffd700", "#00ff00", "#00bfff", "#ff00ff", "#f98700", "#000001"];
     
 
     d3.csv("data/datapoints.csv").then(function(data) {
         
         var color = d3.scaleOrdinal()
             .domain(battalions.reverse())
-            .range(d3.schemeCategory10);
+            .range(colores_g);
     
         // Build linear scale for each dimension with min/max value domain
         var y = {}
@@ -152,7 +153,7 @@
             .append("g")
             .attr("class", "axis")
             .attr("transform", function(d) { return "translate(" + x(d) + ")"; })
-            .each(function(d) { d3.select(this).call(d3.axisLeft().ticks(6).scale(y[d])); })
+            .each(function(d) { d3.select(this).call(d3.axisLeft().ticks(10).scale(y[d])); })
             // Title from the different array
             .append("text")
             .style("text-anchor", "middle")
